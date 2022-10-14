@@ -1,0 +1,13 @@
+.error_page {
+    width: 30%;
+    height: 40%;
+    border-radius: 40px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 22px;
+    padding: 2%;
+    color: #fd2d01;
+}

@@ -1,0 +1,18 @@
+.btn {
+    width: 90%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 11% auto;
+    background-color: #FD2D01;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn:hover{
+    transform: scale(1.015);
+}

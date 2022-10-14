@@ -1,0 +1,16 @@
+.feed {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.post_feed {
+    display: flex;
+    justify-content: center;
+}
+
+.post {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}

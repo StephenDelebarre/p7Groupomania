@@ -1,0 +1,22 @@
+.create_post {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #d1d1d1;
+    padding: 3%;
+}
+
+.post_form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 100px;
+    padding: 3%;
+    border-radius: 20px;
+}
+
+.text_area {
+    border: 3px solid;
+    resize: none;
+    border-radius: 30px;
+    padding: 3%;
+}
