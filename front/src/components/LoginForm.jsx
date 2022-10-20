@@ -28,7 +28,7 @@ function LoginForm () {
         password: password
       },
       headers: {
-        Authorization: "Bearer"
+        Authorization: "Bearer" 
       }
 
     })

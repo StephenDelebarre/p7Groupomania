@@ -6,33 +6,33 @@ html {
 #root {
     width: 100%;
     height: 100%;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 body {
     width: 100%;
-    height: 100%;
-    font-family: "lato", "sans-serif";
-    
+    height: 100%;    
 }
 
 .container {
-    width: 75%;
-    height: 100%;
+    width: 100%;
+    height: auto;
     background-color: #fff;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    position: fixed;
 }
 
 .navbar {
     width: 100%;
     display: flex;
-    margin-top: 3%;
     justify-content: center;
     align-items: center;
+    background-color: #4e5166;
+    padding: 2% 0;
+}
+
+.navbar ul {
+    padding: 0;
 }
 
 .nav_logo {
@@ -50,7 +50,7 @@ body {
 }
 
 .nav_list a {
-    color: #c1c1c1;
+    color: #fff;
 }
 
 .nav_list a:hover{
@@ -60,7 +60,7 @@ body {
 .logout_div {
     position: absolute;
     right: 5%;
-    color: #c1c1c1;
+    color: #fff;
 }
 
 

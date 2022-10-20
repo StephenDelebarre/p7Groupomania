@@ -1,5 +1,5 @@
-import React, {useContext, useEffect, useState} from "react";
-import Logo from "../Image/logo_noir.png"
+import React, {useContext} from "react";
+import Logo from "../Image/logo_blanc.png"
 import "../style/Home.css"
 import AuthContext from "../services/AuthContext"
 import { useNavigate } from "react-router-dom";

@@ -24,7 +24,7 @@ body {
 
 .Register {
     width: 500px;
-    height: 600px;
+    height: auto;
     background-color: #fff;
     border-radius: 30px;
 }
@@ -43,6 +43,7 @@ p a{
     display: flex;
     justify-content: center;
     text-decoration: none;
+    padding-bottom: 3%;
 }
 
 p a:hover {

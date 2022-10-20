@@ -4,30 +4,41 @@ import axios from "axios";
 
 function PostForm() {
 
-    const [message, setMessage] = useState("")
-    const [image, setImage] = useState(null)
-    // const [like, setLike] = useState()
+    const [message, setMessage] = useState("");
+    const [image, setImage] = useState("");
 
     const createPost = (e) => {
+
         e.preventDefault();
 
         const token = localStorage.getItem("token")
         const userId = localStorage.getItem("userId")
-        const post = {
-            userId: userId,
-            message: message,
-            image: image,
-        }
-        
+
+        // const post = {
+        //     userId: userId,
+        //     message: message,
+        //     image: image
+        // }
+
+
+        const formData = new FormData();
+        formData.append("userId", userId);
+        formData.append("message", message);
+        formData.append("image", image);
+
+        formData.forEach((value, key) => {
+            console.log(key + " " + value)
+        })
         axios({
             method: "post",
             url: `${process.env.REACT_APP_API_URL}api/posts`,
             data: {
-                post
             },
             headers: {
-                Authorization: "Bearer " + token
-            }
+                Authorization: "Bearer " + token,
+                "content-type": "multipart/form-data"
+            },
+            transformRequest: formData => formData
         })
         .then((res) => {
             console.log(res)
@@ -46,11 +57,14 @@ function PostForm() {
                     cols="100" 
                     rows="10" 
                     className="text_area"
+                    placeholder="Écrire ici..."
                     onChange={(e) => setMessage(e.target.value)} value={message}
                 >
                 </textarea>
-                <input type="file" accept="image/" className="add_image_btn" onChange={(e) => setImage (e.target.value)} value={image} />
-                <button className="btn_post">Publier</button>
+                <div className="btn_nav">
+                    <input type="file" accept=".png,.jpeg,.jpg" className="add_image_btn" onChange={(e) => setImage (e.target.files[0])}/>
+                    <button className="btn_post">Publier</button>
+                </div>
             </form>
         </div>
     )

@@ -11,9 +11,6 @@ function SignupForm () {
   const handleSignup = (e) => {
     e.preventDefault();
 
-    console.log("coucou")
-    console.log(password)
-
     const errorForm = document.getElementsByClassName("error")
 
     axios({
@@ -30,6 +27,9 @@ function SignupForm () {
       } else {
         window.location("/")
       }
+      console.log(email)
+      console.log(password)
+      console.log(res)
     })
     .catch((err) => {
       console.log(err)
@@ -44,7 +44,7 @@ function SignupForm () {
             <input 
               type="email" 
               id="email" 
-              name="email" 
+              name="email"
               placeholder="Veuillez saisir votre adresse mail" 
               onChange={(e) => setEmail (e.target.value)} value={email}>
             </input>
