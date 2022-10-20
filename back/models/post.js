@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const postSchema = mongoose.Schema({
-    userId: {type: String, require: true}, 
-    message: {type: String, require: true},
-    imageURL: {type: String},
+    userId: {type: String, required: true}, 
+    message: {type: String, required: true},
+    imageURL: {type: String, default: null},
     like: {type: Number},
     usersLiked: {type: [String]},
 

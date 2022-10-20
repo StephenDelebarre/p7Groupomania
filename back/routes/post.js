@@ -8,9 +8,8 @@ const postController = require("../controllers/post");
 router.post("/", auth, multer, postController.createPost);
 router.put("/:id", auth, multer, postController.modifyPost);
 router.delete("/:id", auth, postController.deletePost);
-router.get("/:id", auth, postController.getOnePost);
 router.get("/", auth, postController.getAllPosts);
-// router.post("/:id/like", auth, postController.likePost);
+router.post("/:id/like", auth, postController.likePost);
 
 
 module.exports = router;
