@@ -2,6 +2,10 @@
 
 Installation de l'application.
 
+Créez un dossier. Placez vous dans le dossier avec votre terminal.
+
+Depuis ce dossier, dans votre console faite un git clone https://github.com/StephenDelebarre/p7Groupomania
+
 Aller dans le dossier Back.
 
 Dans le fichier "app.js", remplacer le cluster mongoDB existant par le votre.
