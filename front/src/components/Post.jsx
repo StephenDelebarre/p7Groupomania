@@ -24,7 +24,7 @@ function Post({post}) {
         if (userId === post.userId) {
             await axios({
                 method: "delete",
-                url: `${process.env.REACT_APP_API_URL}api/posts/${post._id}`,
+                url: `http://localhost:5000/api/posts/${post._id}`,
                 headers: {
                     Authorization: "bearer " + token
                 }
@@ -46,7 +46,7 @@ function Post({post}) {
         newPost.append("message", newText);
         newPost.append("image", newImage);
 
-        await axios.put(`${process.env.REACT_APP_API_URL}api/posts/${post._id}`, newPost, {
+        await axios.put(`http://localhost:5000/api/posts/${post._id}`, newPost, {
         headers: {
             Authorization: "Bearer " + token,
             "content-type": "multipart/form-data",
@@ -72,7 +72,7 @@ function Post({post}) {
 
          axios({
             method: "post",
-            url: `${process.env.REACT_APP_API_URL}api/posts/${post._id}/like`,
+            url: `http://localhost:5000/api/posts/${post._id}/like`,
             headers: {
                 Authorization: "Bearer " + token
             },

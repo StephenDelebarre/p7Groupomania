@@ -14,7 +14,7 @@ function Feed() {
     const getPost = useCallback (async () => {
         await axios({
             method: "get",
-            url: `${process.env.REACT_APP_API_URL}api/posts`,
+            url: "http://localhost:5000/api/posts",
             headers: {
                 Authorization: "Bearer " + token
             },

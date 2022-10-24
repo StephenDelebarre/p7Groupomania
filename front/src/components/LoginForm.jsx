@@ -23,7 +23,7 @@ function LoginForm () {
 
     axios({
       method: "post",
-      url: `${process.env.REACT_APP_API_URL}api/auth/login`,
+      url: "http://localhost:5000/api/auth/login",
       data: {
         email: email,
         password: password

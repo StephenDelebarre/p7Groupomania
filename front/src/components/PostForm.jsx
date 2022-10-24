@@ -21,7 +21,7 @@ function PostForm() {
         formData.append("message", message);
         formData.append("image", image);
 
-        await axios.post(`${process.env.REACT_APP_API_URL}api/posts`, formData, {
+        await axios.post("http://localhost:5000/api/posts", formData, {
         headers: {
         Authorization: "Bearer " + token,
         "content-type": "multipart/form-data",
