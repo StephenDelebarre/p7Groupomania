@@ -4,9 +4,9 @@ Installation de l'application.
 
 Aller dans le dossier Back.
 
-Dans le fichier app.js rempplacer le cluster mongoDB existant par le votre.
+Dans le fichier "app.js", remplacer le cluster mongoDB existant par le votre.
 
-Commencez par créer un fichier .env.
+Commencez par créer un fichier ".env".
 
 Créer les variables suuivante avec les informations correspondantes :
 
