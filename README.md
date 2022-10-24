@@ -6,26 +6,26 @@ Créez un dossier. Placez vous dans le dossier avec votre terminal.
 
 Depuis ce dossier, dans votre console faite un git clone https://github.com/StephenDelebarre/p7Groupomania
 
-Aller dans le dossier Back.
+Allez dans le dossier Back.
 
-Dans le fichier "app.js", remplacer le cluster mongoDB existant par le votre.
+Dans le fichier "app.js", remplacez le cluster mongoDB existant par le votre.
 
 Commencez par créer un fichier ".env".
 
-Créer les variables suuivante avec les informations correspondantes :
+Créez les variables suuivantes avec les informations correspondantes :
 
-DB_USERNAME: indiquer le nom d'utilisateur pour votre cluster.
-DB_PASSWORD: indiquer le mot de passe de votre cluster.
-DB_SECRET_TOKEN: indiquer la clé secret pour votre token.
+DB_USERNAME: indiquez le nom d'utilisateur pour votre cluster.
+DB_PASSWORD: indiquez le mot de passe de votre cluster.
+DB_SECRET_TOKEN: indiquez la clé secrete pour votre token.
 
-Faites ensuite "npm install" dans la console afin d'installer les outils nécessaire pour faire fonctionner le backend. 
+Faite ensuite "npm install" dans la console afin d'installer les outils nécessaire pour faire fonctionner le backend. 
 
-Démarrer votre serveur avec la commande "npm start" ou "nodemon". Le serveur va démarrer sur le port 5000.
+Démarrez votre serveur avec la commande "npm start" ou "nodemon". Le serveur va démarrer sur le port 5000.
 
-Aller ensuite dans le dossier front.
+Allez ensuite dans le dossier front.
 
 Faite "npm install" dans la console afin d'installer l'application.
 
-Démarrer l'application avec la commande "npm start".
+Démarrez l'application avec la commande "npm start".
 
 L'application souvrira automatiquement sur le port 3000.
