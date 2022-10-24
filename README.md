@@ -1,60 +1,27 @@
 # p7Groupomania
 
-Getting Started with Create React App
+Installation de l'application.
 
-This project was bootstrapped with Create React App.
-Available Scripts
+Aller dans le dossier Back.
 
-In the project directory, you can run:
-npm start
+Dans le fichier app.js rempplacer le cluster mongoDB existant par le votre.
 
-Runs the app in the development mode.
-Open http://localhost:3000 to view it in your browser.
+Commencez par créer un fichier .env.
 
-The page will reload when you make changes.
-You may also see any lint errors in the console.
-npm test
+Créer les variables suuivante avec les informations correspondantes :
 
-Launches the test runner in the interactive watch mode.
-See the section about running tests for more information.
-npm run build
+DB_USERNAME: indiquer le nom d'utilisateur pour votre cluster.
+DB_PASSWORD: indiquer le mot de passe de votre cluster.
+DB_SECRET_TOKEN: indiquer la clé secret pour votre token.
 
-Builds the app for production to the build folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Faites ensuite "npm install" dans la console afin d'installer les outils nécessaire pour faire fonctionner le backend. 
 
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
+Démarrer votre serveur avec la commande "npm start" ou "nodemon". Le serveur va démarrer sur le port 5000.
 
-See the section about deployment for more information.
-npm run eject
+Aller ensuite dans le dossier front.
 
-Note: this is a one-way operation. Once you eject, you can't go back!
+Faite "npm install" dans la console afin d'installer l'application.
 
-If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
+Démarrer l'application avec la commande "npm start".
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except eject will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use eject. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-Learn More
-
-You can learn more in the Create React App documentation.
-
-To learn React, check out the React documentation.
-Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-npm run build fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+L'application souvrira automatiquement sur le port 3000.
