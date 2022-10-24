@@ -29,3 +29,6 @@ Faite "npm install" dans la console afin d'installer l'application.
 Démarrez l'application avec la commande "npm start".
 
 L'application souvrira automatiquement sur le port 3000.
+
+
+ps: Lors de la création de compote, l'application renvoie une erreur 404 mais la création se fait bien (vérifier la base de données)
