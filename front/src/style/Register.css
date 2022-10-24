@@ -43,9 +43,28 @@ p a{
     display: flex;
     justify-content: center;
     text-decoration: none;
-    padding-bottom: 3%;
+    padding: 0 1% 1% 3%;
 }
 
 p a:hover {
     color: #FD2D01;
+}
+
+.btn {
+    width: 90%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 11% auto;
+    background-color: #FD2D01;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn:hover{
+    transform: scale(1.015);
 }

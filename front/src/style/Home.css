@@ -6,9 +6,6 @@ html {
 #root {
     width: 100%;
     height: 100%;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 }
 
 body {
@@ -29,6 +26,7 @@ body {
     align-items: center;
     background-color: #4e5166;
     padding: 2% 0;
+    position: fixed;
 }
 
 .navbar ul {
@@ -66,4 +64,11 @@ body {
 
 .logout_div:hover{
     color: #fd2d01;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav_logo {
+        width: 125px;
+        height: 25px;
+    }
 }

@@ -1,24 +1,25 @@
 import React, {useState, useContext} from "react";
-import "../style/Form.css"
+import "../style/Form.css";
 import axios from "axios";
-import Button from "./Button"
 import AuthContext from "../services/AuthContext";
 import { useNavigate } from "react-router-dom";
+
+// formulaire de connexion
 
 function LoginForm () {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const Context = useContext(AuthContext)
+  const Context = useContext(AuthContext);
 
   const handleLogin = (e) => {
     
     e.preventDefault();
 
-    const errorForm = document.querySelector(".error")
+    const errorForm = document.querySelector(".error");
 
     axios({
       method: "post",
@@ -38,18 +39,19 @@ function LoginForm () {
       Context.login(res.data.token)
       navigate("/Home")
       localStorage.setItem("userId", res.data.userId)
+      localStorage.setItem("admin", res.data.isAdmin)
     })
     .catch((err) => {
       console.log(err)
       errorForm.innerHTML = "Email et/ou mot de passe incorrect"
     });
-  }
+  };
 
   return (
 
-      <form action="" onSubmit={handleLogin}>
+      <form onSubmit={handleLogin}>
           <div className="input_div">
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input 
               type="email" 
               id="email" 
@@ -60,7 +62,7 @@ function LoginForm () {
             </input>
           </div>
           <div className="input_div">
-            <label for="password">Mot de passe</label>
+            <label htmlFor="password">Mot de passe</label>
             <input 
               type="password" 
               id="password"
@@ -70,9 +72,9 @@ function LoginForm () {
             </input>
           </div>
           <div className="error"></div>
-          <Button text="Se connecter"/>
+          <button className="btn" type="submit">Se connecter</button>
         </form>
-  )
-}
+  );
+};
 
 export default LoginForm;

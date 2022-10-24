@@ -1,7 +1,7 @@
 .create_post {
     display: flex;
     justify-content: center;
-    padding: 1%;
+    padding: 8% 2% 1% 2%
 }
 
 .post_form {
@@ -12,15 +12,20 @@
 }
 
 .text_area {
+    width: 80%;
+    height: 50%;
     border: 2px solid #4e5166;
     resize: none;
     border-radius: 20px;
     padding: 3%;
+    margin: auto;
 }
 
 .btn_nav {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    padding: 1%;
 }
 
 .btn_post {
@@ -31,4 +36,26 @@
     font-size: 18px;
     border: none;
     border-radius: 10%;
+}
+
+.input_image_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_image {
+    width: 100px;
+    height: 100px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file_label {
+    padding: 1%;
+}
+
+.file_label i{
+    color: #4e5166;
 }

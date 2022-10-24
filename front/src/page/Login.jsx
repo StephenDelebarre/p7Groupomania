@@ -1,8 +1,8 @@
 import React from "react";
-import LoginForm from "../components/LoginForm"
-import "../style/Register.css"
-import Logo from "../Image/logo.png"
-import {Link} from "react-router-dom"
+import LoginForm from "../components/LoginForm";
+import "../style/Register.css";
+import Logo from "../Image/logo.png";
+import {Link} from "react-router-dom";
 
 function Login() {
 
@@ -18,7 +18,7 @@ function Login() {
                 </p>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Login;

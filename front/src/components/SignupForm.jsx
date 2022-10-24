@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import "../style/Form.css"
+import "../style/Form.css";
 import axios from "axios";
-import Button from "./Button"
 
 function SignupForm () {
 
@@ -11,7 +10,7 @@ function SignupForm () {
   const handleSignup = (e) => {
     e.preventDefault();
 
-    const errorForm = document.getElementsByClassName("error")
+    const errorForm = document.getElementsByClassName("error");
 
     axios({
       method: "post",
@@ -26,7 +25,7 @@ function SignupForm () {
         errorForm.innerHTML = res.data.error
       } else {
         window.location("/")
-      }
+      };
       console.log(email)
       console.log(password)
       console.log(res)
@@ -34,13 +33,13 @@ function SignupForm () {
     .catch((err) => {
       console.log(err)
     });
-  }
+  };
 
   return (
 
       <form onSubmit={handleSignup}>
           <div className="input_div">
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input 
               type="email" 
               id="email" 
@@ -50,7 +49,7 @@ function SignupForm () {
             </input>
           </div>
           <div className="input_div">
-            <label for="password">Mot de passe</label>
+            <label htmlFor="password">Mot de passe</label>
             <input 
               type="password" 
               id="password" name="password" 
@@ -59,9 +58,9 @@ function SignupForm () {
             </input>
           </div>
           <div className="error"></div>
-          <Button text="S'incrire"/>
+          <button className="btn" type="submit">S'inscrire</button>
         </form>
-  )
-}
+  );
+};
 
 export default SignupForm;

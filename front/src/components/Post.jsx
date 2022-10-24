@@ -1,109 +1,104 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import axios from "axios";
-import "../style/Post.css"
-import UserImage from "../Image/user_image.jpg"
+import "../style/Post.css";
+import UserImage from "../Image/user_image.jpg";
+import "../services/Date";
+import moment from "moment";
 
-function Post({post, message, image, like}) {
+// mise en page, modification et suppression des posts et like
+
+function Post({post}) {
 
     const [update, setUpdate] = useState(false);
-    const [newText, setNewText] = useState("")
-    const [newImage, setNewImage] = useState("");
-    const [addLike, setAddLike] = useState(0)
-    const [liked, setLiked] = useState(false)
+    const [newText, setNewText] = useState("");
+    const [newImage, setNewImage] = useState();
+    const [like, setLike] = useState();
 
-    // const updateItem =
-
-    const token = localStorage.getItem("token")
-    const userId = localStorage.getItem("userId")
-
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
+    const admin = localStorage.getItem("admin");
 
     // fonction de suppression
 
-    const deletePost = () => {
+    const deletePost = async () => {
         if (userId === post.userId) {
-            axios({
+            await axios({
                 method: "delete",
                 url: `${process.env.REACT_APP_API_URL}api/posts/${post._id}`,
                 headers: {
                     Authorization: "bearer " + token
                 }
-            })
+            });
         } else { alert("Vous n'être pas autorisé à supprimer ce post")}
-    }
+
+        window.location.reload();
+
+    };
 
     // fonction de modification
 
-    const modifyPost = () => {
+    const modifyPost = async () => {
+
         if (userId === post.userId) {
-            message = newText
-            image = newImage
-            axios({
-                method: "put",
-                url: `${process.env.REACT_APP_API_URL}api/posts/${post._id}`,
-                headers: {
-                    Authorization: "Bearer " + token
-                },
-                data: {
-                    message,
-                    image
-                }
-            })
-            setUpdate(false)
-        } else {
-            alert("Vous n'êtes pas autorisé à modifier ce post")
-        }
-    }
 
-    // requête qui récupère les posts de la base de données
+        const newPost = new FormData();
+        newPost.append("userId", userId);
+        newPost.append("message", newText);
+        newPost.append("image", newImage);
 
-    axios({
-        method: "get",
-        url: `${process.env.REACT_APP_API_URL}api/posts`,
+        await axios.put(`${process.env.REACT_APP_API_URL}api/posts/${post._id}`, newPost, {
         headers: {
-            Authorization: "Bearer " + token
-        },
-        data: {
-            post
+            Authorization: "Bearer " + token,
+            "content-type": "multipart/form-data",
+            'Content-Type': 'application/octet-stream',
         }
-    })
-    .then((res) => {
 
-    })
-    .catch ((err) => {
-        console.log(err)
-    })
+            })
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+        };
+
+        window.location.reload();
+        
+    };
+
+    // liker les posts
 
     const updateLike = () => {
 
-        axios({
+         axios({
             method: "post",
             url: `${process.env.REACT_APP_API_URL}api/posts/${post._id}/like`,
             headers: {
                 Authorization: "Bearer " + token
             },
             data: {
-                like
+                like: like,
+                userId: userId
             }
-        })
-        .then(() => {
-            setAddLike(liked ? like -1 : like + 1);
-            setLiked(!liked)
-        })
-    }
+        });
+        setLike(1);
+
+        document.querySelector(".fa-heart").classList.add("heart");
+    };
 
 
     return (
         <div className="post">
             <div className="post_header">
                 <div className="user_identity">
-                <img src={UserImage} alt="" className="post_img" />
+                <img src={UserImage} alt="" className="post_img_user" />
                 {post.userId}
                 </div>
-                {userId === post.userId && (
+                {(userId === post.userId || admin === "true") && (
                     <div className="post_btn">
                         <ul>
-                            <li className="modify_btn" onClick={() => setUpdate(!update)}><i class="fa-solid fa-pen-to-square fa-xl"></i></li>
-                            <li className="delete_btn" onClick={deletePost}><i class="fa-solid fa-trash fa-xl"></i></li>
+                            <li className="modify_btn" onClick={() => setUpdate(!update)}><i className="fa-solid fa-pen-to-square fa-xl"></i></li>
+                            <li className="delete_btn" onClick={deletePost}><i className="fa-solid fa-trash fa-xl"></i></li>
                         </ul>
                     </div>
                 )}
@@ -120,20 +115,34 @@ function Post({post, message, image, like}) {
                         <div className="update_post_btn">
                             <button className="update_btn" onClick={modifyPost}>Envoyer</button>
                         </div>
+                        {post.imageURL && (
+                            <div>
+                                <input type="file" accept="image/*" className="add_image_btn" onChange={(e) => setNewImage (e.target.files[0], e.target.files[0].name)}/>
+                                <label htmlFor="file" className="file_label"><i className="fa-solid fa-image fa-xl"></i></label>
+                            </div>
+                        )}
                     </div>
                 )}
-                <div className="post_img">
-                    {post.imageUrl}
-                </div>
+                {post.imageURL && (
+                    <div className="post_img_div">
+                        <img src={post.imageURL} alt="" className="post_img"></img>
+                    </div>
+                )}
+                <div className="date">Publié il y a {moment(post.updatedAt).locale("fr").fromNow(true)}{" "}</div>
             </div>
             <div className="post_footer">
                 <div className="like">
-                <i class="fa-regular fa-heart" onClick={updateLike}></i>
-                    <p className="like_counter" >{post.like}</p>
+                    {post.usersLiked.includes(userId) && (
+                        <i class="fa-sharp fa-solid fa-heart heart"></i>
+                    )}
+                    {!post.usersLiked.includes(userId) && (
+                        <i className="fa-regular fa-heart" onClick={updateLike}></i>
+                    )}
+                    <p className="like_counter">{post.like}</p>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Post;

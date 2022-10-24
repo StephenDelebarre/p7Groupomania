@@ -1,8 +1,8 @@
 import React from "react";
-import SignupForm from "../components/SignupForm"
-import "../style/Register.css"
-import Logo from "../Image/logo.png"
-import {Link} from "react-router-dom"
+import SignupForm from "../components/SignupForm";
+import "../style/Register.css";
+import Logo from "../Image/logo.png";
+import {Link} from "react-router-dom";
 
 function Signup() {
 

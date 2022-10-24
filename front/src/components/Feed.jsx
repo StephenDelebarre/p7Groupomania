@@ -1,41 +1,38 @@
 import React, {useState, useEffect, useCallback} from "react";
 import Post from "../components/Post";
 import axios from "axios";
-import "../style/Feed.css"
+import "../style/Feed.css";
+
+// fil d'actualité qui affiche tout les posts
 
 function Feed() {
 
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
 
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
 
-    const getPost = useCallback( () => {
-            axios({
-                method: "get",
-                url: `${process.env.REACT_APP_API_URL}api/posts`,
-                headers: {
-                    Authorization: "Bearer " + token
-                },
-                data: {
-                    posts: posts
-                }
-            })
-            .then((res) => {
-                setPosts(res.data)
-            })
-            .catch ((err) => {
-                console.log(err)
-            })
-    }, [])
+    const getPost = useCallback (async () => {
+        await axios({
+            method: "get",
+            url: `${process.env.REACT_APP_API_URL}api/posts`,
+            headers: {
+                Authorization: "Bearer " + token
+            },
+            data: {
+                posts: posts
+            }
+        })
+        .then((res) => {
+            setPosts(res.data)
+        })
+        .catch ((err) => {
+            console.log(err)
+        });
+    }, []);
 
     useEffect(() => {
-        if(posts) {
-            getPost()
-        }
-    }, [token, getPost])
-        
-
-    console.log(setPosts)
+        getPost();
+    }, [getPost]);
 
     return (
         <div className="feed">
@@ -46,8 +43,7 @@ function Feed() {
                 }
             </ul>
         </div>
-    )
-
-    }
+    );
+};
 
 export default Feed; 

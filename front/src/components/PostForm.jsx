@@ -1,52 +1,43 @@
 import React, {useState} from "react";
-import "../style/PostForm.css"
+import "../style/PostForm.css";
 import axios from "axios";
+
+// fomulaire de création de post
 
 function PostForm() {
 
     const [message, setMessage] = useState("");
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState();
 
-    const createPost = (e) => {
+    const createPost = async (e) => {
 
         e.preventDefault();
 
-        const token = localStorage.getItem("token")
-        const userId = localStorage.getItem("userId")
-
-        // const post = {
-        //     userId: userId,
-        //     message: message,
-        //     image: image
-        // }
-
+        const token = localStorage.getItem("token");
+        const userId = localStorage.getItem("userId");
 
         const formData = new FormData();
         formData.append("userId", userId);
         formData.append("message", message);
         formData.append("image", image);
 
-        formData.forEach((value, key) => {
-            console.log(key + " " + value)
-        })
-        axios({
-            method: "post",
-            url: `${process.env.REACT_APP_API_URL}api/posts`,
-            data: {
-            },
-            headers: {
-                Authorization: "Bearer " + token,
-                "content-type": "multipart/form-data"
-            },
-            transformRequest: formData => formData
+        await axios.post(`${process.env.REACT_APP_API_URL}api/posts`, formData, {
+        headers: {
+        Authorization: "Bearer " + token,
+        "content-type": "multipart/form-data",
+        'Content-Type': 'application/octet-stream',
+        }
+
         })
         .then((res) => {
             console.log(res)
         })
         .catch((err) => {
             console.log(err)
-        })
-    }
+        });
+
+        window.location.reload();
+    };
 
     return (
         <div className="create_post">
@@ -62,12 +53,13 @@ function PostForm() {
                 >
                 </textarea>
                 <div className="btn_nav">
-                    <input type="file" accept=".png,.jpeg,.jpg" className="add_image_btn" onChange={(e) => setImage (e.target.files[0])}/>
+                    <input type="file" id="file" accept="image/*" className="add_image_btn" onChange={(e) => setImage (e.target.files[0], e.target.files[0].name)}/>
+                    <label htmlFor="file" className="file_label"><i className="fa-solid fa-image fa-2xl"></i></label>
                     <button className="btn_post">Publier</button>
                 </div>
             </form>
         </div>
-    )
-}
+    );
+};
 
 export default PostForm;
